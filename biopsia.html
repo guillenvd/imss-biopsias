@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <title>IMSS - BIOPSIA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="assets/css/biopsia.css" rel="stylesheet" id="bootstrap-css">
+    <script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/biopsia.js"></script>
+    <script src="assets/js/userLogin.js"></script>
+    <script src="assets/js/buscarPaciente.js"></script>
+
+</head>
+<body>
+ 
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle navbar-toggle-sidebar collapsed">
+            BIOPSIAS
+            </button>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:void(0)">
+                BIOPSIAS
+            </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">      
+           
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:void(0)">MEDICO</a></li>
+                <li class="dropdown ">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        SESIÓN
+                        <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="dropdown-header">OPCIONES</li>
+                            <li class=""><a href="javascript:void(0)">Editar Perfil</a></li>
+                            <li class="divider"></li>
+                            <li><a href="javascript:void(0)" onclick="logOut();">Logout</a></li>
+                        </ul>
+                    </li>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>     
+     <div class="container-fluid main-container">
+        <div class="col-md-4 content" style="margin-bottom: 1cm;">
+              <div class ="panel panel-default"> 
+                <div class ="panel-heading">
+                    TABLERO PRINCIPAL
+                </div>
+                <div class ="panel-body">
+                
+                <div class="form-group col-lg-6">
+                    <label>Numero</label>
+                    <input type="text" name="Numero" class="form-control" id="Numero" >
+                </div> 
+                <div class="form-group col-lg-6">
+                    <label>Afiliacion</label>
+                    <input type="text" name="Afiliacion" class="form-control" id="Afiliacion" >
+                </div>
+                
+                <div class="form-group col-lg-12">
+                    <label>Nombre</label>
+                    <input type="text" name="Nombre" class="form-control" id="Nombre" >
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label>Fecha de cita</label>
+                    <input type="text" name="FechaC" class="form-control" id="FechaC">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label>Edad</label>
+                    <input type="text" name="Edad" class="form-control" id="Edad" disabled="true">
+                </div>
+
+                <div class="form-group col-lg-6">
+                    <label>Numero de memo</label>
+                    <input type="text" name="NumeroMemo" class="form-control" id="NumeroMemo" disabled="true">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label>Fecha Recibido</label>
+                    <input type="text" name="FechaR" class="form-control" id="FechaR" disabled="true">
+                </div>
+                <div class="form-group col-lg-6">
+                    <label>Fecha Entrega</label>
+                    <input type="text" name="FechaE" class="form-control" id="FechaE" disabled="true">
+                </div>
+                             
+                <div class="form-group col-lg-6">
+                    <label>Especimen</label>
+                    <input type="text" name="Especimen" class="form-control" id="Especimen" disabled="true">
+                </div>
+
+                <div class="form-group col-lg-12">
+                    <label>Medico</label>
+                    <input type="text" name="Medico" class="form-control" id="Medico" disabled="true">
+                </div>
+               <div class="col-sm-12 controls">
+                            <a c="submit" href="javascript:void(0)" onclick="buscarPaciente();" class="btn btn-primary pull-right" style="background:#af1515;">
+                                <i class="glyphicon glyphicon-search"></i> Buscar Paciente
+                            </a>                          
+                </div>
+                </div>
+
+              </div>
+        </div>
+<div class="col-md-8">
+        <div class="col-sm-12 controls" style="text-align:center;">
+               <p id="alerts">
+               </p>                        
+         </div>
+        <div class="col-md-6">
+            <div class="well">
+                <b>
+                    <span class="glyphicon glyphicon-heart"></span> Datos del Medico
+                </b>
+                <hr style="background-color: grey; height: 1px; border: 4; color: grey;">
+                <ul id="sortable" class="list-unstyled ui-sortable">
+                    <strong class="pull-left primary-font">Datos Clinicos</strong>
+                    <small class="pull-right text-muted">
+                       <span class="glyphicon glyphicon-pencil"></span></small>
+                    </br>
+                    <li class="ui-state-default" id="datosClinico">
+                    </li>
+                    </br>
+                     <strong class="pull-left primary-font">Diagnostico</strong>
+                    <small class="pull-right text-muted">
+                       <span class="glyphicon glyphicon-pencil"></span></small>
+                    </br>
+                    <li class="ui-state-default" id="diagnostico">
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="well">
+                <b>
+                    <span class="glyphicon glyphicon-user"></span> Datos del paciente
+                </b>
+                <hr style="background-color: grey; height: 1px; border: 4; color: grey;">
+                <ul id="sortable" class="list-unstyled ui-sortable">
+                    <strong class="pull-left primary-font">Desc. Microscópica.</strong>
+                    <small class="pull-right text-muted">
+                       <span class="glyphicon glyphicon-pencil"></span></small>
+                    </br>
+                    <li class="ui-state-default" id="Microscopica">
+                    </li>
+                    </br>
+                     <strong class="pull-left primary-font">Desc. Macrascópica.</strong>
+                    <small class="pull-right text-muted">
+                       <span class="glyphicon glyphicon-pencil"></span></small>
+                    </br>
+                    <li class="ui-state-default" id="Macroscopica">
+                    </li>
+                    
+                </ul>
+            </div>
+               <div class="col-sm-12 controls">
+                            <a c="submit" href="javascript:void(0)" onclick="imprimirBiopsia();" disabled='true' id="btn-imprimir" class="btn btn-primary pull-right" style="background:#af1515;">
+                                <i class="glyphicon glyphicon-print"></i> Imprimir Biopsia.
+                            </a>                          
+                </div>
+        </div>
+        
+    </div>
+
+</div>
+<div class="navbar navbar-default navbar-fixed-bottom" style="text-align:center">
+    <div class="container">
+      <p class="navbar-text" >© 2015 - Realizado por: David Guillen Vazquez - Gabriel Soberanes Blaz
+         
+      </p>
+     
+    </div>
+</div>
+<script type="text/javascript">
+    sesionTry();
+    getItem();
+
+</script>
+</body>
+</html>
